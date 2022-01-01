@@ -1,0 +1,51 @@
+:root {
+    --btn-custom-primary: #009ff5;
+    --btn-custom-secondary: hsl(21, 87%, 45%);
+    --text-white: #fff;
+    --custom-font-size: 50px;
+    --custom-text-color: #009ff5;
+    --bg-secondary: #f8f9fa;
+    --bg-primary:#009ff5;
+}
+
+h1 {
+    font-size: var(--custom-font-size);
+}
+
+a {
+    color: #6b6b73;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--btn-custom-primary);
+}
+
+.btn-custom-primary {
+    background-color: var(--btn-custom-primary);
+    color: var(--text-white);
+}
+.btn-custom-primary:hover {
+    background: var(--btn-custom-secondary);
+    color: var(--text-white);
+}
+.text-generic {
+    color: var(--custom-text-color);
+}
+
+.navabr-collapse .navbar-nav {
+    background-color: var(--bg-secondary);
+}
+
+.navbar-toggler,
+.navbar-toggler-icon {
+    background-color: var(--custom-text-color);
+}
+.custom-link:hover{
+    color: var(--custom-text-color) !important;
+}
+
+.bg-custom{
+    background: var(--bg-primary);
+}
