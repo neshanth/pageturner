@@ -4,22 +4,24 @@
     <div class="container">
         <div class="intro my-5">
             <h1 class="text-center my-3">Your Career in <span class="text-generic">Tech</span> Begins Here</h1>
-            <form class="row g-3 justify-content-center">
-                <div class="col-3">
-                    <input type="text" name="job_title" placeholder="Job Title"  class="form-control" />
-                </div>
-                <div class="col-3">
-                    <select class="form-select" aria-label="City">
-                        <option selected>Choose City</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="col-3">
-                    <button type="submit" class="btn btn-custom-primary mb-3">Search</button>
-                </div>
-            </form>
+            <div class="row">
+                <form>
+                    <div class="col-3">
+                        <input type="text" name="job_title" placeholder="Job Title"  class="form-control" />
+                    </div>
+                    <div class="col-3">
+                        <select class="form-select" aria-label="City">
+                            <option selected>Choose City</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-custom-primary mb-3">Search</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="categories">
             <h2 class="text-center my-3">Choose From Many</h2>

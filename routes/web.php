@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Job\JobController;
+use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Role\RoleController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +34,7 @@ Route::get("/dashboard",[DashboardController::class,'index'])->name("dashboard")
 // Roles Controller
 Route::prefix("admin")->group(function(){
     Route::resource("roles", RoleController::class);
+    Route::resource("jobs", JobController::class);
 });
-
+Route::get("/profile/{id}", [ProfileController::class,'index'])->name("profile");
+Route::put("/profile/{id}",[ProfileController::class,'store'])->name("profile");

@@ -50,6 +50,36 @@
                     </ul>
                 </li>
                 @endcan
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-suitcase"></i>
+                        <p>
+                            Job
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="{{ route('jobs.index') }}" class="nav-link">
+                                <p>Jobs</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('jobs.create') }}" class="nav-link">
+                                <p>New Job</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route("profile",\Illuminate\Support\Facades\Auth::user()->id) }}" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            Profile
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

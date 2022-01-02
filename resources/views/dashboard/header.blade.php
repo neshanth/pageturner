@@ -13,5 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
