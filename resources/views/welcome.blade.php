@@ -5,19 +5,20 @@
         <div class="intro my-5">
             <h1 class="text-center my-3">Your Career in <span class="text-generic">Tech</span> Begins Here</h1>
             <div class="row">
-                <form>
-                    <div class="col-3">
-                        <input type="text" name="job_title" placeholder="Job Title"  class="form-control" />
+                <form class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" name="job_title" placeholder="Job Title"  class="form-control bg-white" />
                     </div>
-                    <div class="col-3">
-                        <select class="form-select" aria-label="City">
+                    <div class="col-md-3 mb-3">
+                        <select class="form-select bg-white" aria-label="City">
                             <option selected>Choose City</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
                     </div>
-                    <div class="col-3">
+                    <div class="col-md-3">
                         <button type="submit" class="btn btn-custom-primary mb-3">Search</button>
                     </div>
                 </form>
