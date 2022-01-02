@@ -9,7 +9,7 @@
             @csrf
             <div class="mb-3">
                 <label for="role" class="form-label">Role</label>
-                <input type="text" name="role" class="form-control" id="role" required>
+                <input type="text" name="name" class="form-control" id="role" required>
             </div>
             <button type="submit" class="btn btn-custom-primary">Submit</button>
         </form>

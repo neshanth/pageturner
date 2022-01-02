@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Role;
 use App\Http\Controllers\Controller;
 use App\Models\Roles;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -20,7 +21,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Roles::all();
+        $roles = Role::all();
       return view("role.index",['roles' => $roles]);
     }
 
@@ -43,7 +44,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
        $data = $request->all();
-       Roles::create($data);
+       Role::create($data);
        return redirect()->back()->with("success","Role created Successfully");
     }
     /**
@@ -54,7 +55,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        Roles::destroy($id);
+        Role::destroy($id);
         return redirect()->back()->with('success','Role Deleted Successfully');
     }
 }

@@ -26,7 +26,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                @can('viewAny',\App\Models\User::class)
+                @role("Admin")
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user-tag"></i>
@@ -49,8 +49,8 @@
                         </li>
                     </ul>
                 </li>
-                @endcan
-                @can("viewAny",\App\Models\Job::class)
+                @endrole
+                @role('Employer')
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-suitcase"></i>
@@ -73,7 +73,7 @@
                         </li>
                     </ul>
                 </li>
-                @endcan
+                @endrole
                 <li class="nav-item">
                     <a href="{{ route("profile",\Illuminate\Support\Facades\Auth::user()->id) }}" class="nav-link">
                         <i class="nav-icon fas fa-cog"></i>

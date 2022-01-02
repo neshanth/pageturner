@@ -17,13 +17,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = DB::table('roles')->where('role',"=","Admin")->get();
-        $adminRoleId = $admin[0];
-        User::create([
+       $adminUser =  User::create([
             'name' => env('USERNAME'),
             'email' => env('EMAIL'),
             'password' => Hash::make(env('PASSWORD')),
-            'role_id' => $adminRoleId->id
         ]);
+       $adminUser->assignRole(env('ROLE'));
+
     }
 }

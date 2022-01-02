@@ -19,7 +19,7 @@
                     @foreach($roles as $key=>$role)
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ $role->role }}</td>
+                        <td>{{ $role->name }}</td>
                         <td class="text-danger">
                             <form action="{{ route("roles.destroy", $role->id) }}" method="post">
                                 @csrf
