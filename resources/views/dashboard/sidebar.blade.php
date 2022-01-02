@@ -50,6 +50,7 @@
                     </ul>
                 </li>
                 @endcan
+                @can("viewAny",\App\Models\Job::class)
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-suitcase"></i>
@@ -72,6 +73,7 @@
                         </li>
                     </ul>
                 </li>
+                @endcan
                 <li class="nav-item">
                     <a href="{{ route("profile",\Illuminate\Support\Facades\Auth::user()->id) }}" class="nav-link">
                         <i class="nav-icon fas fa-cog"></i>
