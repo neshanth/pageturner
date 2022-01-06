@@ -22,19 +22,17 @@ class AuthController extends Controller
    }
    public function registerPost(Request $request)
    {
-       $roles = $this->getUserRole();
-       $userRole = $roles[0];
        $request->validate([
           'name' => "required",
           'email' => "required|email|unique:users",
           'password' => "required|min:5"
       ]);
-       User::create([
+       $user = User::create([
           'name' => $request->name,
           'email' => $request->email,
-          'password' => Hash::make($request->password),
-          'role_id' => $userRole->id
+          'password' => Hash::make($request->password)
       ]);
+       $user->assignRole("User");
       return redirect()->back()->with('success','Registration Successful');
    }
    public function loginPost(Request $request)
@@ -57,9 +55,5 @@ class AuthController extends Controller
        $request->session()->invalidate();
        $request->session()->regenerate();
        return redirect("/");
-   }
-   private  function getUserRole()
-   {
-       return DB::table('roles')->where('role','User')->get();
    }
 }

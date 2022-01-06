@@ -1,29 +1,17 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="container">
-        <div class="intro my-5">
-            <h1 class="text-center my-3">Your Career in <span class="text-generic">Tech</span> Begins Here</h1>
-            <div class="row">
-                <form class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3 mb-3">
-                        <input type="text" name="job_title" placeholder="Job Title"  class="form-control bg-white" />
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <select class="form-select bg-white" aria-label="City">
-                            <option selected>Choose City</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="submit" class="btn btn-custom-primary mb-3">Search</button>
-                    </div>
-                </form>
+    <div class="intro">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{{ asset('images/banner.jpg') }}" alt="First slide">
+                </div>
             </div>
         </div>
+    </div>
+    <div class="container">
+
         <div class="categories">
             <h2 class="text-center my-3">Choose From Many</h2>
             <div class="row">

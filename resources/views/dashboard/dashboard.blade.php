@@ -26,7 +26,7 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
+                <div class="row justify-content-center">
                    @yield('content')
                 </div>
                 <!-- /.row -->

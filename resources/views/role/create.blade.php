@@ -10,6 +10,9 @@
             <div class="mb-3">
                 <label for="role" class="form-label">Role</label>
                 <input type="text" name="name" class="form-control" id="role" required>
+                @if($errors->has('name'))
+                   <p class="text-danger mb-3">{{ $errors->first('name') }}</p>
+                @endif
             </div>
             <button type="submit" class="btn btn-custom-primary">Submit</button>
         </form>

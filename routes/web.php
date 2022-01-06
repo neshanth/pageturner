@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Job\JobController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Role\RoleController;
+use App\Http\Controllers\Category\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +34,9 @@ Route::post("/logout",[AuthController::class,'logout'])->name("logout");
 Route::get("/dashboard",[DashboardController::class,'index'])->name("dashboard");
 // Roles Controller
 Route::prefix("admin")->group(function(){
-    Route::resource("roles", RoleController::class);
-    Route::resource("jobs", JobController::class);
+    Route::resource("roles", RoleController::class)->middleware('role:Admin');
+    Route::resource("categories",CategoryController::class)->middleware('role:Admin');
+
 });
 Route::get("/profile/{id}", [ProfileController::class,'index'])->name("profile");
 Route::put("/profile/{id}",[ProfileController::class,'store'])->name("profile");

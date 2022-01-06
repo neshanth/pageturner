@@ -23,12 +23,12 @@ a:hover {
 }
 
 .btn-custom-primary {
-    background-color: var(--btn-custom-primary);
-    color: var(--text-white);
+    background-color: var(--btn-custom-primary) !important;
+    color: var(--text-white) !important;
 }
 .btn-custom-primary:hover {
-    background: var(--btn-custom-secondary);
-    color: var(--text-white);
+    background: var(--btn-custom-secondary) !important;
+    color: var(--text-white) !important;
 }
 .text-generic {
     color: var(--custom-text-color);
@@ -48,4 +48,9 @@ a:hover {
 
 .bg-custom{
     background: var(--bg-primary);
+}
+
+
+.banner-img{
+    background-image: url("../public/images/banner.jpg");
 }

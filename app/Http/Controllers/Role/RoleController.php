@@ -43,6 +43,9 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
        $data = $request->all();
        Role::create($data);
        return redirect()->back()->with("success","Role created Successfully");

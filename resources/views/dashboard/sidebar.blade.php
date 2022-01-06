@@ -49,7 +49,31 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-tag"></i>
+                        <p>
+                            Category
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="{{ route('categories.index') }}" class="nav-link">
+                                <p>Categories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('categories.create') }}" class="nav-link">
+                                <p>New Category</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @endrole
+
+
                 @role('Employer')
                 <li class="nav-item">
                     <a href="#" class="nav-link">
