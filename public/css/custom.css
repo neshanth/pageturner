@@ -54,3 +54,8 @@ a:hover {
 .banner-img{
     background-image: url("../public/images/banner.jpg");
 }
+
+
+.cat-item{
+    width:100px;
+}

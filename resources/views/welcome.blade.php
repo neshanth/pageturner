@@ -12,20 +12,16 @@
     </div>
     <div class="container">
 
-        <div class="categories">
-            <h2 class="text-center my-3">Choose From Many</h2>
+        <div class="categories my-5">
+            <h2 class="text-center my-5">Choose From Many</h2>
             <div class="row">
-                <div class="col-4">
-                    <p>FRONT END</p>
-                </div>
-                <div class="col-4">
-                    <p>FRONT END</p>
-                </div>
-                <div class="col-4">
-                    <p>FRONT END</p>
-                </div>
-                <div class="col-4">
-                    <p>FRONT END</p>
+                <div class="owl-carousel owl-theme">
+                    @foreach($categories as $category)
+                        <div class="item cat-item">
+                            <img src="{{ asset("storage/category/".$category->image) }}"  alt="{{ $category->name }}">
+                            <p class="text-center my-2 text-bold">{{ $category->name }}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

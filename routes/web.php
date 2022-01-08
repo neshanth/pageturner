@@ -6,6 +6,8 @@ use App\Http\Controllers\Job\JobController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Homepage\HomePageController;
+use App\Http\Controllers\Product\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomePageController::class,'index']);
 
 //Auth Controllers
 Route::get("/login",[AuthController::class,'login'])->name("login");
@@ -36,7 +36,7 @@ Route::get("/dashboard",[DashboardController::class,'index'])->name("dashboard")
 Route::prefix("admin")->group(function(){
     Route::resource("roles", RoleController::class)->middleware('role:Admin');
     Route::resource("categories",CategoryController::class)->middleware('role:Admin');
-
+    Route::resource("products",ProductController::class)->middleware('role:Admin');
 });
 Route::get("/profile/{id}", [ProfileController::class,'index'])->name("profile");
 Route::put("/profile/{id}",[ProfileController::class,'store'])->name("profile");

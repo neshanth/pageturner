@@ -24,7 +24,7 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control-lg form-control" id="password" placeholder="Passwords">
+                <input type="password" name="password" class="form-control-lg form-control" id="password" placeholder="Password">
                 @if($errors->has('password'))
                     <p class="text-danger my-3">{{ $errors->first('password') }}</p>
                 @endif

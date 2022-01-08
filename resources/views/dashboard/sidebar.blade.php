@@ -71,28 +71,24 @@
                         </li>
                     </ul>
                 </li>
-                @endrole
-
-
-                @role('Employer')
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-suitcase"></i>
+                        <i class="nav-icon fas fa-user-tag"></i>
                         <p>
-                            Job
+                            Product
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="{{ route('jobs.index') }}" class="nav-link">
-                                <p>Jobs</p>
+                            <a href="{{ route('products.index') }}" class="nav-link">
+                                <p>Products</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('jobs.create') }}" class="nav-link">
-                                <p>New Job</p>
+                            <a href="{{ route('products.create') }}" class="nav-link">
+                                <p>New Product</p>
                             </a>
                         </li>
                     </ul>

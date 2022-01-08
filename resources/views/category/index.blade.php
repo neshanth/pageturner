@@ -3,6 +3,7 @@
 
 @section('content')
     <div class="col-md-10">
+        <h2 class="text-generic my-5 text-center">All Categories</h2>
         @if(session('success'))
             <h4 class="text-danger">{{ session('success') }}</h4>
         @endif
