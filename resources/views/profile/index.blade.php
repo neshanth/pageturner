@@ -31,7 +31,7 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Default file input example</label>
+                        <label for="formFile" class="form-label">Image</label>
                         <input class="form-control" name="avatar" type="file" id="formFile">
                         @if($errors->has('avatar'))
                             <p class="text-danger">{{ $errors->first('avatar') }}</p>
