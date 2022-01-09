@@ -140,7 +140,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $imageName =  $this->getImage($id);
+       $this->deleteImage($imageName);
+       Product::delete($id);
+       return redirect("/");
     }
     private function checkIfImageExists($id,Request $request): bool
     {

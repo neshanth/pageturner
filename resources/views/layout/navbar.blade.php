@@ -12,11 +12,11 @@
                 <li class="nav-item mx-4 mt-1">
                    <a class="custom-link text-dark fw-bold fs-5" aria-current="page" href="{{ route('login') }}">Log In</a>
                 </li>
-                 <li class="nav-item">
+                 <li class="nav-item mx-4 mt-1">
                    <a class="btn btn-custom-primary fw-bold" aria-current="page" href="{{ route("register") }}">Register Now</a>
                 </li>
                 @else
-                    <li class="nav-item">
+                    <li class="nav-item mx-4 mt-1">
                         Welcome
                         <a class="custom-link fw-bold text-uppercase" href="{{ route('dashboard') }}" aria-current="page">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
                     </li>
@@ -25,6 +25,11 @@
                          <button class="btn btn-link p-0  text-danger mx-3">Logout</button>
                     </form>
                 @endguest
+                <li class="nav-item mx-4 mt-1 fs-4">
+                    <a href="#" class="custom-link">
+                        <i class="fa fa-shopping-cart text-generic"></i>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

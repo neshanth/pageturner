@@ -26,13 +26,24 @@
             </div>
         </div>
         <div class="recently-posted">
-            <h2 class="text-center my-3">Recently Posted Jobs</h2>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+            <h2 class="text-center my-5">Recently Added Products</h2>
+              <div class="row">
+                  @foreach($products as $product)
+                      <div class="col-md-3">
+                          <div class="card mb-3" style="max-width: 14rem">
+                              <img src="{{ asset("storage/product/".$product->image) }}" class="card-img-top" alt="{{ $product->image }}">
+                              <div class="card-body product-description">
+                                  <h5 class="card-title text-bolder text-generic product-title">{{ $product->title }}</h5>
+                                  <p class="card-text">{!! substr(strip_tags($product->description),0,100) !!}...</p>
+                                  <p class="card-text fs-5"><span class="text-generic">&#x20B9</span> {{ $product->price }}</p>
+                                  <button class="btn btn-custom-primary">Add to Cart</button>
+                              </div>
+
+                          </div>
+                      </div>
+
+                  @endforeach
+              </div>
             </div>
         </div>
     </div>

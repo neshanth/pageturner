@@ -51,7 +51,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-tag"></i>
+                        <i class="nav-icon fas fa-list"></i>
                         <p>
                             Category
                             <i class="fas fa-angle-left right"></i>
@@ -73,14 +73,13 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-tag"></i>
+                        <i class="nav-icon fas fa-book"></i>
                         <p>
                             Product
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-
                         <li class="nav-item">
                             <a href="{{ route('products.index') }}" class="nav-link">
                                 <p>Products</p>
