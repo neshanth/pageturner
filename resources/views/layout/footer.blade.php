@@ -23,5 +23,7 @@
         })
     </script>
     {{-- Owl Carousel   --}}
+    {{--  Custom Js  --}}
+    <script src="{{ asset("js/custom.js") }}"></script>
 </body>
 </html>

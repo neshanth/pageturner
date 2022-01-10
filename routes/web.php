@@ -8,6 +8,7 @@ use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Homepage\HomePageController;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Cart\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,5 +39,12 @@ Route::prefix("admin")->group(function(){
     Route::resource("categories",CategoryController::class)->middleware('role:Admin');
     Route::resource("products",ProductController::class)->middleware('role:Admin');
 });
+
+//Profile Controller
 Route::get("/profile/{id}", [ProfileController::class,'index'])->name("profile");
 Route::put("/profile/{id}",[ProfileController::class,'store'])->name("profile");
+
+//Cart Controller
+Route::post("/cart",[CartController::class,'store'])->name("cart");
+Route::get("/cart",[CartController::class,'count'])->name("cart");
+Route::get("/cart/show",[CartController::class,'index']);

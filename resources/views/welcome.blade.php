@@ -36,7 +36,16 @@
                                   <h5 class="card-title text-bolder text-generic product-title">{{ $product->title }}</h5>
                                   <p class="card-text">{!! substr(strip_tags($product->description),0,100) !!}...</p>
                                   <p class="card-text fs-5"><span class="text-generic">&#x20B9</span> {{ $product->price }}</p>
-                                  <button class="btn btn-custom-primary">Add to Cart</button>
+
+                                  <form class="cart-form">
+                                      @csrf
+                                      <input type="hidden" class="product-id" name="product_id" value="{{ $product->id }}">
+                                      @auth
+                                          <input type="hidden" class="customer-id" name="customer_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}">
+                                      @endauth
+                                      <button class="btn btn-custom-primary" id="cart-submit">Add to Cart</button>
+                                      <p class="cart-success d-none"></p>
+                                  </form>
                               </div>
 
                           </div>

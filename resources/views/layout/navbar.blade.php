@@ -26,8 +26,11 @@
                     </form>
                 @endguest
                 <li class="nav-item mx-4 mt-1 fs-4">
-                    <a href="#" class="custom-link">
+                    <a href="/cart/show" class="custom-link">
                         <i class="fa fa-shopping-cart text-generic"></i>
+                        <p class="d-inline-block">
+                          <span class="cart-count"></span>
+                        </p>
                     </a>
                 </li>
             </ul>
