@@ -51,10 +51,14 @@ class CartController extends Controller
 
       return response()->json("Added to cart");
    }
+   public function changeQty()
+   {
+      
+   }
 
-    private function checkProductCount($productId)
-    {
+   private function checkProductCount($productId)
+   {
        return Cart::where("product_id","=",$productId)->count();
-    }
+   }
 
 }

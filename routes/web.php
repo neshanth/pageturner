@@ -48,3 +48,4 @@ Route::put("/profile/{id}",[ProfileController::class,'store'])->name("profile");
 Route::post("/cart",[CartController::class,'store'])->name("cart");
 Route::get("/cart",[CartController::class,'count'])->name("cart");
 Route::get("/cart/show",[CartController::class,'index']);
+Route::post("/cart/update",[CartController::class,'changeQty']);
