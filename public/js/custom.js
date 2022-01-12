@@ -46,29 +46,24 @@ function cartCount() {
 cartCount();
 
 //Increment and Decrement
-$(".dec-btn").on("click", function (e) {
+$(".qty-btn").on("click", function (e) {
     e.preventDefault();
+    var button = $(this).attr("data-qty");
     var input = $(this).parent().find(".quantity-input");
-    console.log(input.val());
-    var count = parseInt(input.val()) - 1;
-    count = count < 1 ? 1 : count;
-    input.val(count);
-    changeQty($(this));
-});
-$(".inc-btn").on("click", function (e) {
-    e.preventDefault();
-    var input = $(this).parent().find(".quantity-input");
-    input.val(parseInt(input.val()) + 1);
-});
-
-function changeQty(selector) {
-    var token = selector.find("input[name='_token']").val();
-    console.log(selector);
-    var cartId = selector.find("input[name='cart-id']").val();
+    var token = $(this).parent().find("input[name='_token']").val();
+    var cartId = $(this).parent().find("input[name='cart-id']").val();
     var data = {
         _token: token,
         cartId: cartId,
+        qty: button,
     };
+    if (button === "dec") {
+        var count = parseInt(input.text()) - 1;
+        count = count < 1 ? 1 : count;
+        input.text(count);
+    } else {
+        input.text(parseInt(input.text()) + 1);
+    }
     $.ajax({
         url: "/cart/update",
         type: "post",
@@ -80,4 +75,27 @@ function changeQty(selector) {
             console.log(err);
         },
     });
-}
+});
+
+//Delete Cart Item
+$(".cart-delete").on("click", function (e) {
+    e.preventDefault();
+    var token = $(this).parent().find("input[name='_token']").val();
+    var cartId = $(this).parent().find(".cart-delete").attr("data-id");
+    console.log(cartId);
+    var data = {
+        _token: token,
+        cartId: cartId,
+    };
+    $.ajax({
+        url: "/cart/delete",
+        type: "delete",
+        data: data,
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (err) {
+            console.log(err);
+        },
+    });
+});

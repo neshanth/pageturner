@@ -71,15 +71,13 @@ a:hover {
 .cart-title {
     margin-bottom: 20px;
 }
-.quantity-input {
-    width: 20%;
-}
+
 .dec-btn,
 .inc-btn {
     background-color: white;
     border: none;
 }
-.fa-plus,
-.fa-minus {
+.fa-chevron-up,
+.fa-chevron-down {
     color: var(--btn-custom-primary);
 }

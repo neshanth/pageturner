@@ -8,7 +8,7 @@
             <div class="col-md-7 cart-content mx-4">
                 <div class="cart-title d-flex justify-content-between p-4 border-bottom border-primary">
                     <h4>Shopping Cart</h4>
-                    <p>3 items</p>
+                    <p>{{ $cart->count()}} items</p>
                 </div>
                 <div class="cart-items">
                         @foreach($cart as $c)
@@ -22,9 +22,9 @@
                             <div class="col cart-qty d-flex align-items-start">
                                 <form class="qty-form">
                                     @csrf
-                                    <button class="mx-1 dec-btn"><i class="fas fa-minus"></i></button>
-                                    <input type="text" class="quantity-input text-center" value={{ $c->quantity }}>
-                                    <button class="mx-1 inc-btn"><i class="fas fa-plus"></i></button>
+                                    <button data-qty="inc" class="mx-1 inc-btn qty-btn"><i class="fas fa-chevron-up"></i></button>
+                                    <p class="quantity-input text-center">{{ $c->quantity }}</p>
+                                    <button data-qty="dec" class="mx-1 dec-btn qty-btn"><i class="fas fa-chevron-down"></i></button>
                                     <input type="hidden" name="cart-id" value={{ $c->id }}>
                                 </form>  
                             </div>
@@ -32,7 +32,11 @@
                                 <p>{{ $c->product->price }}</p>
                             </div>
                             <div class="col">
-                                <button class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                <form>
+                                    @csrf
+                                   <button data-id={{ $c->id }} class="btn btn-danger cart-delete"><i class="fas fa-times"></i></button>
+                                </form>
+                                
                             </div>
                             <hr class="my-1">
                         </div>

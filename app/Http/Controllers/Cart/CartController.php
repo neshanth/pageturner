@@ -51,9 +51,24 @@ class CartController extends Controller
 
       return response()->json("Added to cart");
    }
-   public function changeQty()
+   public function changeQty(Request $request)
    {
-      
+      $cart =  Cart::find($request->cartId);
+      $identifier =  $request->qty;
+      if($identifier == "inc"){
+         $cart->quantity += 1;
+      }else{
+         if($cart->quantity > 1){
+            $cart->quantity -= 1;
+         }
+      }
+      $cart->save();
+      return response()->json("Cart Updated");
+   }
+   public function delete(Request $request)
+   {
+      Cart::destroy($request->cartId);
+      return response()->json("Deleted");
    }
 
    private function checkProductCount($productId)
