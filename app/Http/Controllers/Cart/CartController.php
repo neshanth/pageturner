@@ -36,7 +36,8 @@ class CartController extends Controller
       $data = [
        'product_id' => $productId,
        'customer_id' => $request->customer_id,
-       'quantity' => $request->quantity
+       'quantity' => $request->quantity,
+       'price' => $request->price
       ];
 
       //check if value already exists
@@ -49,7 +50,7 @@ class CartController extends Controller
          Cart::create($data);
       }
 
-      return response()->json("Added to cart");
+      return response()->json("Added To Cart");
    }
    public function changeQty(Request $request)
    {
@@ -73,12 +74,12 @@ class CartController extends Controller
    public function cartTotal()
    {
       $customerId = Auth::user()->id;
-      $cartItems = Cart::select('product_id')->where("customer_id","=",$customerId)->get();
+      $cartItems = Cart::where("customer_id","=",$customerId)->get();
       $total = 0;
       foreach($cartItems as $cartItem){
-         $total += $cartItem->product_id->product()->price;
+         $total += $cartItem->price * $cartItem->quantity;
       }
-      return response()->json($cartItems);
+      return response()->json(floatval($total));
    }
 
    private function checkProductCount($productId)

@@ -40,6 +40,7 @@
                                   <form class="cart-form">
                                       @csrf
                                       <input type="hidden" class="product-id" name="product_id" value="{{ $product->id }}">
+                                      <input type="hidden" class="price" name="price" value="{{ $product->price }}">
                                       @auth
                                           <input type="hidden" class="customer-id" name="customer_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}">
                                       @endauth

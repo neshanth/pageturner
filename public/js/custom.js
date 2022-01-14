@@ -3,6 +3,7 @@ $(".cart-form").on("submit", function (e) {
     var token = $(this).find("input[name='_token']").val();
     var productId = $(this).find(".product-id").val();
     var customerId = $(this).find(".customer-id").val();
+    var price = $(this).find(".price").val();
     var successElement = $(this).find(".cart-success");
 
     let data = {
@@ -10,6 +11,7 @@ $(".cart-form").on("submit", function (e) {
         product_id: productId,
         customer_id: customerId,
         quantity: 1,
+        price: price,
     };
 
     $.ajax({
@@ -111,11 +113,12 @@ $(".cart-delete").on("click", function (e) {
 
 //Cart Totals
 function cartTotals() {
+    var total = $(".total-amount");
     $.ajax({
         url: "/cart/totals",
         type: "get",
         success: function (response) {
-            console.log(response);
+            total.text(response);
         },
         error: function (err) {
             console.log(err);
