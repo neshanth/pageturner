@@ -3,6 +3,7 @@ $(".cart-form").on("submit", function (e) {
     var token = $(this).find("input[name='_token']").val();
     var productId = $(this).find(".product-id").val();
     var customerId = $(this).find(".customer-id").val();
+    var successElement = $(this).find(".cart-success");
 
     let data = {
         _token: token,
@@ -16,9 +17,10 @@ $(".cart-form").on("submit", function (e) {
         type: "post",
         data: data,
         success: function (response) {
-            console.log(response);
-            var successElement = e.target.lastChild;
-            successElement.textContent = response;
+            successElement.text(response);
+            setTimeout(function () {
+                successElement.hide();
+            }, 3000);
             cartCount();
         },
         error: function (err) {
@@ -82,7 +84,11 @@ $(".cart-delete").on("click", function (e) {
     e.preventDefault();
     var token = $(this).parent().find("input[name='_token']").val();
     var cartId = $(this).parent().find(".cart-delete").attr("data-id");
-    console.log(cartId);
+    var deleteButton = $(this);
+    var cartItem = $(this).parent();
+    var spinner = document.querySelector(
+        `.spinner-border[data-id="${cartId}"]`
+    );
     var data = {
         _token: token,
         cartId: cartId,
@@ -92,10 +98,29 @@ $(".cart-delete").on("click", function (e) {
         type: "delete",
         data: data,
         success: function (response) {
-            console.log(response);
+            deleteButton.prop("disabled", true);
+            cartItem.addClass("disable-item");
+            spinner.classList.add("show-loader");
+            location.reload();
         },
         error: function (err) {
             console.log(err);
         },
     });
 });
+
+//Cart Totals
+function cartTotals() {
+    $.ajax({
+        url: "/cart/totals",
+        type: "get",
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (err) {
+            console.log(err);
+        },
+    });
+}
+
+cartTotals();

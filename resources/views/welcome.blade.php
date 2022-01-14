@@ -44,7 +44,7 @@
                                           <input type="hidden" class="customer-id" name="customer_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}">
                                       @endauth
                                       <button class="btn btn-custom-primary" id="cart-submit">Add to Cart</button>
-                                      <p class="cart-success d-none"></p>
+                                      <p class="cart-success text-success"></p>
                                   </form>
                               </div>
 

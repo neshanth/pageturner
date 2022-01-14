@@ -38,13 +38,32 @@
                                 </form>
                                 
                             </div>
+                            <div class="spinner-border text-primary" data-id={{ $c->id }} role="status" style="visibility:hidden;">
+                                <span class="sr-only">Loading...</span>
+                            </div>
                             <hr class="my-1">
                         </div>
                         @endforeach
                 </div>
             </div>
-            <div class="col-md-4 cart-summary bg-custom p-4 text-white border-bottom border-white">
-                <h4>Summary</h4>
+            <div class="col-md-4 cart-summary bg-custom p-4">
+              <div class="summary pb-4 text-center">
+                  <h4 class="border-bottom border-white text-white py-3">Summary</h4>
+              </div>
+              <div class="amount border-bottom border-white pb-5">
+                    <select class="form-select">
+                        <option value="express" selected>Express   &#x20B9;  10.00  (1-3 days) </option>
+                        <option value="free">Free (4-6 days)</option>
+                    </select>
+              </div>
+              <div class="total my-3 d-flex justify-content-between text-white">
+                  <h5 class="text-white">TOTAL</h5>
+                  <p class="total">
+                      <span>&#x20B9;</span>
+                      <span class="amount"></span>
+                 </p>
+              </div> 
+              
             </div>
         </div>
     </div>

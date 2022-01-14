@@ -70,10 +70,21 @@ class CartController extends Controller
       Cart::destroy($request->cartId);
       return response()->json("Deleted");
    }
+   public function cartTotal()
+   {
+      $customerId = Auth::user()->id;
+      $cartItems = Cart::select('product_id')->where("customer_id","=",$customerId)->get();
+      $total = 0;
+      foreach($cartItems as $cartItem){
+         $total += $cartItem->product_id->product()->price;
+      }
+      return response()->json($cartItems);
+   }
 
    private function checkProductCount($productId)
    {
        return Cart::where("product_id","=",$productId)->count();
    }
+   
 
 }

@@ -50,3 +50,4 @@ Route::get("/cart",[CartController::class,'count'])->name("cart");
 Route::get("/cart/show",[CartController::class,'index']);
 Route::post("/cart/update",[CartController::class,'changeQty']);
 Route::delete("/cart/delete",[CartController::class,'delete']);
+Route::get("/cart/totals",[CartController::class,'cartTotal']);
