@@ -73,7 +73,7 @@ $(".qty-btn").on("click", function (e) {
         type: "post",
         data: data,
         success: function (response) {
-            console.log(response);
+            cartTotals();
         },
         error: function (err) {
             console.log(err);
@@ -109,21 +109,31 @@ $(".cart-delete").on("click", function (e) {
             console.log(err);
         },
     });
+    cartTotals();
 });
 
 //Cart Totals
 function cartTotals() {
     var total = $(".total-amount");
+    var shippingMethod = $("#shipping").find(":selected").val();
     $.ajax({
         url: "/cart/totals",
         type: "get",
         success: function (response) {
-            total.text(response);
+            var finalTotal = response;
+            if (shippingMethod === "express") {
+                finalTotal += 10.0;
+            }
+            total.text(finalTotal);
         },
         error: function (err) {
             console.log(err);
         },
     });
 }
+
+$("#shipping").on("change", function () {
+    cartTotals();
+});
 
 cartTotals();

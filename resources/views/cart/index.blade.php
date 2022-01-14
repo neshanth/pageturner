@@ -58,12 +58,13 @@
               </div>
               <div class="total my-3 d-flex justify-content-between text-white">
                   <h5 class="text-white">TOTAL</h5>
-                  <h5 class="total">
+                  <div class="total-container">
+                    <h5 class="total">
                       <span>&#x20B9;</span>
                       <span class="total-amount"></span>
-                 </h5>
+                    </h5>
+                  </div>  
               </div> 
-              
             </div>
         </div>
     </div>
