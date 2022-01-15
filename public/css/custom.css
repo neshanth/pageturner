@@ -95,3 +95,9 @@ a:hover {
 .show-loader {
     visibility: visible !important;
 }
+
+/* Checkout */
+.checkout-btn:hover {
+    background-color: #6b6b73;
+    color: #fff;
+}

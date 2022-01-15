@@ -92,6 +92,7 @@
                         </li>
                     </ul>
                 </li>
+                
                 @endrole
                 <li class="nav-item">
                     <a href="{{ route("profile",\Illuminate\Support\Facades\Auth::user()->id) }}" class="nav-link">

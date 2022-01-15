@@ -124,7 +124,7 @@ function cartTotals() {
             if (shippingMethod === "express") {
                 finalTotal += 10.0;
             }
-            total.text(finalTotal);
+            total.text("Rs. " + finalTotal);
         },
         error: function (err) {
             console.log(err);

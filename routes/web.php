@@ -9,6 +9,7 @@ use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Homepage\HomePageController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Cart\CartController;
+use App\Http\Controllers\Checkout\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,3 +52,6 @@ Route::get("/cart/show",[CartController::class,'index']);
 Route::post("/cart/update",[CartController::class,'changeQty']);
 Route::delete("/cart/delete",[CartController::class,'delete']);
 Route::get("/cart/totals",[CartController::class,'cartTotal']);
+
+//Checkout Controller
+Route::get("/checkout",[CheckoutController::class,'index']);
