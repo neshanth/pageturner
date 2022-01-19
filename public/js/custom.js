@@ -24,12 +24,12 @@ $(".cart-form").on("submit", function (e) {
                 successElement.hide();
             }, 3000);
             cartCount();
+            console.log(response);
         },
         error: function (err) {
             if (err.status === 401) {
                 window.location.href = "login";
             }
-            console.log(err);
         },
     });
 });

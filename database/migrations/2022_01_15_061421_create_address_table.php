@@ -15,6 +15,7 @@ class CreateAddressTable extends Migration
     {
         Schema::create('address', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id")->references("id")->on("users")->onDelete("cascade");
             $table->string('firstname');
             $table->string('lastname')->nullable();
             $table->longText('full_address');

@@ -10,6 +10,7 @@ use App\Http\Controllers\Homepage\HomePageController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Checkout\CheckoutController;
+use App\Http\Controllers\Address\AddressController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,3 +56,8 @@ Route::get("/cart/totals",[CartController::class,'cartTotal']);
 
 //Checkout Controller
 Route::get("/checkout",[CheckoutController::class,'index']);
+Route::post("/checkout",[CheckoutController::class,'checkout']);
+
+//Address Controller
+Route::resource("address", AddressController::class);
+Route::post("/address/billing",[AddressController::class,'setAsBilling']);
