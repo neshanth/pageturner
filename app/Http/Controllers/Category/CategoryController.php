@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -64,7 +66,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        
     }
 
     /**

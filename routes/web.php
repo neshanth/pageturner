@@ -12,19 +12,9 @@ use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Address\AddressController;
 use App\Http\Controllers\Order\OrderController;
-
+use App\Http\Controllers\Category\ShowCategoryController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', [HomePageController::class,'index']);
 
@@ -67,3 +57,7 @@ Route::post("/address/billing",[AddressController::class,'setAsBilling']);
 //Orders Controller
 Route::get("/orders",[OrderController::class,'index']);
 Route::get("/orders/{id}",[OrderController::class,'getOrderItems']);
+
+
+//Show category
+Route::get("/category/{id}",[ShowCategoryController::class,'index']);

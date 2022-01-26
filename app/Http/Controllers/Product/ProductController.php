@@ -78,7 +78,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+      dd("here...");
     }
 
     /**

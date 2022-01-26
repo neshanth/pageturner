@@ -17,9 +17,9 @@
             <div class="row">
                 <div class="owl-carousel owl-theme">
                     @foreach($categories as $category)
-                        <div class="item cat-item">
+                        <div class="item cat-item text-center">
                             <img src="{{ asset("storage/category/".$category->image) }}"  alt="{{ $category->name }}">
-                            <p class="text-center my-2 text-bold">{{ $category->name }}</p>
+                             <a class="my-2" href="{{ '/category/'.$category->id }}">{{ $category->name }}</a>
                         </div>
                     @endforeach
                 </div>
@@ -33,7 +33,9 @@
                           <div class="card mb-3" style="max-width: 14rem">
                               <img src="{{ asset("storage/product/".$product->image) }}" class="card-img-top" alt="{{ $product->image }}">
                               <div class="card-body product-description">
-                                  <h5 class="card-title text-bolder text-generic product-title">{{ $product->title }}</h5>
+                                  <h5 class="card-title text-bolder text-generic product-title">
+                                      {{ $product->title }}
+                                  </h5>
                                   <p class="card-text">{!! substr(strip_tags($product->description),0,100) !!}...</p>
                                   <p class="card-text fs-5"><span class="text-generic">&#x20B9</span> {{ $product->price }}</p>
 
