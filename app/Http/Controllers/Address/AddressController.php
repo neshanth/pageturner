@@ -44,12 +44,17 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
+
+        $messages = [
+            'postcode.regex' => 'Please provide an Indian Postcode',
+        ];
+
         $request->validate([
             'firstname' => 'required',
             'full_address'=> 'required',
             'state' => 'required',
             'city' => 'required',
-            'postcode' => 'required',
+            'postcode' => 'required|regex:/^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$/',
             'user_id' => 'required'
 
         ]);
@@ -62,6 +67,9 @@ class AddressController extends Controller
             'postcode' => $request->postcode,
             'user_id' => $request->user_id
         ];
+
+        
+
         Address::create($data);
         return redirect()->route("address.index")->with('success','Address Created');
     }
@@ -98,12 +106,13 @@ class AddressController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $request->validate([
             'firstname' => 'required',
             'full_address'=> 'required',
             'state' => 'required',
             'city' => 'required',
-            'postcode' => 'required',
+            'postcode' => 'required|regex:/^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$/',
             'user_id' => 'required'
 
         ]);

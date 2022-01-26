@@ -115,6 +115,22 @@
                         </li>
                     </ul>
                 </li>
+                 <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-truck"></i>
+                        <p>
+                            Orders
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/orders" class="nav-link">
+                                <p>All Orders</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route("profile",\Illuminate\Support\Facades\Auth::user()->id) }}" class="nav-link">
                         <i class="nav-icon fas fa-cog"></i>

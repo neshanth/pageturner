@@ -11,6 +11,8 @@ use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Address\AddressController;
+use App\Http\Controllers\Order\OrderController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,3 +63,7 @@ Route::post("/checkout",[CheckoutController::class,'checkout']);
 //Address Controller
 Route::resource("address", AddressController::class);
 Route::post("/address/billing",[AddressController::class,'setAsBilling']);
+
+//Orders Controller
+Route::get("/orders",[OrderController::class,'index']);
+Route::get("/orders/{id}",[OrderController::class,'getOrderItems']);

@@ -20,6 +20,12 @@ class CheckoutController extends Controller
     public function index()
     {
        $customerId = $this->getCustomerId();
+       //check if cart has products
+       $cartCount = $this->checkIfCartHasProduct($customerId);
+       if($cartCount <= 0){
+         return redirect("/");
+       }
+
        $cartItems = $this->getCartItemsByCustomerId($customerId);
        $addressCount = Address::where("user_id","=",$customerId)->count();
        $address = $this->getCustomerAddress($customerId);
@@ -37,6 +43,11 @@ class CheckoutController extends Controller
     public function checkout(Request $request)
     {
        $customerId = $this->getCustomerId();
+       //check if cart has products
+       $cartCount = $this->checkIfCartHasProduct($customerId);
+       if($cartCount <= 0){
+         return redirect("/");
+       }
        $cartItems = $this->getCartItemsByCustomerId($customerId);
        $total = $this->getCartTotal($customerId);
        $shippingAddress = $this->getCustomerShippingAddress($customerId);
@@ -118,5 +129,10 @@ class CheckoutController extends Controller
     private function clearCart($customerId)
     {
       Cart::where("customer_id",'=',$customerId)->delete();
+    }
+    private function checkIfCartHasProduct($customerId)
+    {
+      $cart = Cart::where("customer_id","=",$customerId)->get();
+      return $cart->count();
     }
 }

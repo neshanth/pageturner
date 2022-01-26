@@ -45,7 +45,7 @@
             <label for="postcode" class="form-label">Postcode</label>
             <input type="text" name="postcode" class="form-control" required>
             @if($errors->has('postcode'))
-                <p class="text-danger mb-3">{{ $errors->first('postcode') }}</p>
+                <p class="text-danger mb-3">{{ $errors->first('postcode') }} Please Provide an Indian Postcode</p>
             @endif
         </div>
         <div class="mb-3">

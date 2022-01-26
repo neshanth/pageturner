@@ -59,9 +59,11 @@
                     </h5>
                   </div>
               </div>
+              @if($cart->count() > 0)
               <div class="d-flex justify-content-center">
                 <a href="/checkout" class="btn btn-light btn-lg checkout-btn">CHECKOUT</a>
-              </div>   
+              </div>
+              @endif   
             </div>
         </div>
     </div>
