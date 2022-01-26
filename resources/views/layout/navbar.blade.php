@@ -20,7 +20,7 @@
                         Welcome
                         <a class="custom-link fw-bold text-uppercase" href="{{ route('dashboard') }}" aria-current="page">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
                     </li>
-                    <form action="logout" method="post">
+                    <form action="{{ route("logout") }}" method="post">
                         @csrf
                          <button class="btn btn-link p-0  text-danger mx-3">Logout</button>
                     </form>

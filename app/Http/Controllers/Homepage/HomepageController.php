@@ -9,10 +9,10 @@ use App\Models\Product;
 
 class HomepageController extends Controller
 {
-    public function index()
-    {
-      $categories = Category::all();
-      $products   = Product::all();
-      return view("welcome", ['categories' => $categories,'products' => $products]);
-    }
+  public function index()
+  {
+    $categories = Category::all();
+    $products   = Product::all();
+    return view("welcome", ['categories' => $categories, 'products' => $products]);
+  }
 }

@@ -69,18 +69,7 @@ class ProductController extends Controller
         Product::create($data);
         return redirect()->back()->with('success','Product Created');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-      dd("here...");
-    }
-
+  
     /**
      * Show the form for editing the specified resource.
      *

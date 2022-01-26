@@ -5,6 +5,7 @@ $(".cart-form").on("submit", function (e) {
     var customerId = $(this).find(".customer-id").val();
     var price = $(this).find(".price").val();
     var successElement = $(this).find(".cart-success");
+    var failiureElement = $(this).find(".cart-fail");
 
     let data = {
         _token: token,
@@ -24,11 +25,14 @@ $(".cart-form").on("submit", function (e) {
                 successElement.hide();
             }, 3000);
             cartCount();
-            console.log(response);
         },
         error: function (err) {
             if (err.status === 401) {
-                window.location.href = "login";
+                // window.location.href = "login";
+                failiureElement.text("Please Log In");
+                setTimeout(function () {
+                    failiureElement.hide();
+                }, 3000);
             }
         },
     });

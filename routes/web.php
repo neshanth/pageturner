@@ -13,6 +13,7 @@ use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Address\AddressController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Category\ShowCategoryController;
+use App\Http\Controllers\Product\ShowProductController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -61,3 +62,5 @@ Route::get("/orders/{id}",[OrderController::class,'getOrderItems']);
 
 //Show category
 Route::get("/category/{id}",[ShowCategoryController::class,'index']);
+//show product
+Route::get("/product/{id}",[ShowProductController::class,'index']);
