@@ -92,11 +92,11 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 @endrole
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-address-book"></i>
+                        <i class="nav-icon fas fa-address-book"></i>
                         <p>
                             Address
                             <i class="fas fa-angle-left right"></i>
@@ -115,9 +115,9 @@
                         </li>
                     </ul>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-truck"></i>
+                        <i class="nav-icon fas fa-truck"></i>
                         <p>
                             Orders
                             <i class="fas fa-angle-left right"></i>

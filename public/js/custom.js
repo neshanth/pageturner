@@ -1,3 +1,11 @@
+// Navigation Menu
+let hamburgerButton = document.querySelector(".hamburger");
+let mobileMenu = document.querySelector(".mobile-menu");
+hamburgerButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hide-menu");
+    mobileMenu.classList.toggle("show-menu");
+});
+
 $(".cart-form").on("submit", function (e) {
     e.preventDefault();
     var token = $(this).find("input[name='_token']").val();
