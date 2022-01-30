@@ -165,9 +165,7 @@ function cartTotals() {
             }
             total.text("Rs. " + finalTotal);
         },
-        error: function (err) {
-            console.log(err);
-        },
+        error: function (err) {},
     });
 }
 

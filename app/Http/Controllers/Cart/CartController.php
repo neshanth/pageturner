@@ -28,7 +28,9 @@ class CartController extends Controller
    {
 
       if (!Auth::user()) {
-         return response()->json(count(session('cart')));
+         if (session('cart') !== null) {
+            return response()->json(count(session('cart')));
+         }
       }
 
       $customerId = Auth::user()->id;
@@ -63,7 +65,7 @@ class CartController extends Controller
          return response()->json("Updated Cart");
       } else {
          Cart::create($data);
-         return response()->json("Added Cart");
+         return response()->json("Added To Cart");
       }
    }
    public function changeQty(Request $request)
@@ -138,8 +140,10 @@ class CartController extends Controller
    {
       $total = 0;
       $cart = session()->get('cart');
-      foreach ($cart as $id => $items) {
-         $total += $items['price'] * $items['quantity'];
+      if ($cart != null) {
+         foreach ($cart as $id => $items) {
+            $total += $items['price'] * $items['quantity'];
+         }
       }
       return $total;
    }
