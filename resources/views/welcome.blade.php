@@ -14,11 +14,13 @@
     <div class="categories my-5">
         <h2 class="text-center my-5">Choose From Many</h2>
         <div class="row">
-            <div class="owl-carousel owl-theme">
+            <div class="main-carousel">
                 @foreach($categories as $category)
-                <div class="item cat-item text-center">
-                    <img src="{{ asset("storage/category/".$category->image) }}" alt="{{ $category->name }}">
-                    <a class="my-2" href="{{ '/category/'.$category->id }}">{{ $category->name }}</a>
+                <div class="carousel-cell">
+                    <div class="item">
+                        <img width="300px" src="{{ asset("storage/category/".$category->image) }}" alt="{{ $category->name }}">
+                        <p> <a class="my-2" href="{{ '/category/'.$category->id }}">{{ $category->name }}</a></p>
+                    </div>
                 </div>
                 @endforeach
             </div>
