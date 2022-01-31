@@ -67,7 +67,7 @@ class ProductController extends Controller
             'image' => $fileName
         ];
         Product::create($data);
-        return redirect()->action("index")->with('success', 'Product Created');
+        return redirect()->back()->with('success', 'Product Created');
     }
 
     /**
@@ -105,7 +105,7 @@ class ProductController extends Controller
             $fileName = $request->file('image')->getClientOriginalName();
             $existingImage = $this->getImage($id);
             $this->deleteImage($existingImage);
-            $request->file("product")->storeAs('public/product', $fileName);
+            $request->file("image")->storeAs('public/product', $fileName);
         } else {
             $fileName = $request->file('image')->getClientOriginalName();
         }
@@ -131,8 +131,8 @@ class ProductController extends Controller
     {
         $imageName =  $this->getImage($id);
         $this->deleteImage($imageName);
-        Product::delete($id);
-        return redirect("/");
+        Product::destroy($id);
+        return redirect()->action([ProductController::class, 'index']);
     }
     private function checkIfImageExists($id, Request $request): bool
     {

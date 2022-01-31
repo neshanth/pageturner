@@ -14,6 +14,13 @@
         selector: '#editor'
     });
 </script>
+<!-- Datatable -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
 
 <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
@@ -31,4 +38,5 @@
 </div>
 <!-- ./wrapper -->
 </body>
+
 </html>

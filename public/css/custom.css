@@ -205,6 +205,12 @@ a {
     margin: 0 1em;
     padding: 0 1em;
 }
+
+/* PRODUCT PAGE */
+.product-image {
+    width: 100%;
+}
+
 /* Cart */
 .cart-content-items {
     border-color: var(--custom-text-color);

@@ -11,7 +11,7 @@
         <a class="btn btn-custom-primary" href="{{ route('products.create') }}">Add Product <i class="fa fa-plus"></i></a>
     </div>
     <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="myTable">
             <thead>
                 <tr class="bg-custom text-white">
                     <th scope="col">#</th>

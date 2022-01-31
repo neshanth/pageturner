@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row my-4 mx-2 justify-content-center">
         <div class="col-md-4">
-            <img src="{{ asset("storage/product/".$product->image) }}" alt="{{ $product->title }}">
+            <img src="{{ asset("storage/product/".$product->image) }}" class="product-image" alt="{{ $product->title }}">
         </div>
         <div class="col-md-6">
             <div class="product-title">

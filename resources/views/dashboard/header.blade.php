@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <!-- Datatables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css" />
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
