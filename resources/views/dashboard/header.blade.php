@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,9 +12,10 @@
     <link rel="stylesheet" href="{{ asset('css/all.min.css')}}">
     <!-- Admin Lte Css -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">

@@ -12,6 +12,7 @@
     --font-family: "Lato", sans-serif;
     --white: #fff;
     --gray: #f1eeff;
+    --text-center: center;
 }
 
 body {
@@ -168,6 +169,7 @@ a {
 .search-form {
     display: flex;
     justify-content: center;
+    margin-top: 1em;
 }
 .search-form input {
     margin-right: 1em;
@@ -181,6 +183,28 @@ a {
     font-weight: 800;
 }
 
+/* END OF SEARCH */
+
+/* CATEGORIES */
+.cat-card {
+    background-color: var(--primary-color);
+    margin: 0.5em 0.5em;
+    padding: 0.3em 0.3em;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.cat-card a {
+    color: var(--white);
+}
+.cat-card:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.carousel-cell {
+    margin: 0 1em;
+    padding: 0 1em;
+}
 /* Cart */
 .cart-content-items {
     border-color: var(--custom-text-color);
@@ -193,6 +217,10 @@ a {
 .cart-success {
     margin: 0.5em;
     font-weight: 600;
+}
+.cart-success,
+.cart-fail {
+    display: none;
 }
 
 .dec-btn,

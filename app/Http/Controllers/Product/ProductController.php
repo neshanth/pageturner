@@ -6,14 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
 
-     public function __construct()
-     {
-       $this->middleware('auth');
-     }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +23,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view("product.index",['products' => $products]);
+        return view("product.index", ['products' => $products]);
     }
 
     /**
@@ -33,7 +34,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view("product.create",['categories' => $categories]);
+        return view("product.create", ['categories' => $categories]);
     }
 
     /**
@@ -45,31 +46,30 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           'title' => 'required',
-           'price' => 'required|min:10|numeric',
-           'cat_id' => 'required',
-           'stock' => 'required|numeric',
-           'description' => 'required',
-           'image' => 'max:1000|mimes:png,jpeg,jpg,svg'
+            'title' => 'required',
+            'price' => 'required|min:10|numeric',
+            'cat_id' => 'required',
+            'stock' => 'required|numeric',
+            'description' => 'required',
+            'image' => 'max:1000|mimes:png,jpeg,jpg,svg'
         ]);
         $fileName = null;
-        if($request->file('image')) {
+        if ($request->file('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/product',$fileName);
-
+            $request->file('image')->storeAs('public/product', $fileName);
         }
         $data = [
-         'title' => $request->title,
-         'price' => $request->price,
-         'cat_id'=> $request->cat_id,
-         'stock' => $request->stock,
-         'description' => $request->description,
-         'image' => $fileName
+            'title' => $request->title,
+            'price' => $request->price,
+            'cat_id' => $request->cat_id,
+            'stock' => $request->stock,
+            'description' => $request->description,
+            'image' => $fileName
         ];
         Product::create($data);
-        return redirect()->back()->with('success','Product Created');
+        return redirect()->action("index")->with('success', 'Product Created');
     }
-  
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -78,9 +78,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::where("id",$id)->get();
+        $product = Product::where("id", $id)->get();
         $categories = Category::all();
-        return view("product.edit",['product' => $product,'categories' => $categories]);
+        return view("product.edit", ['product' => $product, 'categories' => $categories]);
     }
 
     /**
@@ -92,33 +92,33 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $request->validate([
-                   'title' => "required|unique:products,title,$id",
-                   'price' => 'required|min:10|numeric',
-                   'cat_id' => 'required',
-                   'stock' => 'required|numeric',
-                   'description' => 'required',
-                   'image' => 'max:1000|mimes:png,jpeg,jpg,svg'
-         ]);
-         $fileName = null;
-         if($request->hasFile('image') && !$this->checkIfImageExists($id,$request)){
-              $fileName = $request->file('image')->getClientOriginalName();
-              $existingImage = $this->getImage($id);
-              $this->deleteImage($existingImage);
-              $request->file("product")->storeAs('public/product',$fileName);
-         }else{
+        $request->validate([
+            'title' => "required|unique:products,title,$id",
+            'price' => 'required|min:10|numeric',
+            'cat_id' => 'required',
+            'stock' => 'required|numeric',
+            'description' => 'required',
+            'image' => 'max:1000|mimes:png,jpeg,jpg,svg'
+        ]);
+        $fileName = null;
+        if ($request->hasFile('image') && !$this->checkIfImageExists($id, $request)) {
             $fileName = $request->file('image')->getClientOriginalName();
-         }
-         $data = [
-                  'title' => $request->title,
-                  'price' => $request->price,
-                  'cat_id'=> $request->cat_id,
-                  'stock' => $request->stock,
-                  'description' => $request->description,
-                  'image' => $fileName
-         ];
-         Product::find($id)->update($data);
-         return redirect()->back()->with("success","Product Updated Successfully");
+            $existingImage = $this->getImage($id);
+            $this->deleteImage($existingImage);
+            $request->file("product")->storeAs('public/product', $fileName);
+        } else {
+            $fileName = $request->file('image')->getClientOriginalName();
+        }
+        $data = [
+            'title' => $request->title,
+            'price' => $request->price,
+            'cat_id' => $request->cat_id,
+            'stock' => $request->stock,
+            'description' => $request->description,
+            'image' => $fileName
+        ];
+        Product::find($id)->update($data);
+        return redirect()->back()->with("success", "Product Updated Successfully");
     }
 
     /**
@@ -129,23 +129,23 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-       $imageName =  $this->getImage($id);
-       $this->deleteImage($imageName);
-       Product::delete($id);
-       return redirect("/");
+        $imageName =  $this->getImage($id);
+        $this->deleteImage($imageName);
+        Product::delete($id);
+        return redirect("/");
     }
-    private function checkIfImageExists($id,Request $request): bool
+    private function checkIfImageExists($id, Request $request): bool
     {
-         $product = Product::find($id);
-         return $product->image == $request->file('image')->getClientOriginalName();
+        $product = Product::find($id);
+        return $product->image == $request->file('image')->getClientOriginalName();
     }
     private function getImage($id)
     {
-       $product = Product::find($id);
-       return $product->image;
+        $product = Product::find($id);
+        return $product->image;
     }
-     private function deleteImage($imageName)
-     {
-       Storage::delete("/public/product/".$imageName);
-     }
+    private function deleteImage($imageName)
+    {
+        Storage::delete("/public/product/" . $imageName);
+    }
 }

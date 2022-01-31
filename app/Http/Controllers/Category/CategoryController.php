@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view("category.index",['categories' => $categories]);
+        return view("category.index", ['categories' => $categories]);
     }
 
     /**
@@ -40,22 +38,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
-                   'name' => 'required',
-                   'image' => 'max:1000|mimes:png,jpeg,jpg,svg'
+        $request->validate([
+            'name' => 'required'
         ]);
-        $fileName = null;
-        if($request->file('image')) {
-            $fileName = $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/category',$fileName);
-
-        }
         $data = [
-         "name"  => $request->name,
-         "image" => $fileName
+            "name"  => $request->name
         ];
         Category::create($data);
-        return redirect()->back()->with("success","Category Created");
+        return redirect()->action([CategoryController::class, 'index'])->with("success", "Category Created");
     }
 
     /**
@@ -66,7 +56,6 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        
     }
 
     /**
@@ -102,5 +91,4 @@ class CategoryController extends Controller
     {
         //
     }
-
 }

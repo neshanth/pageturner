@@ -17,8 +17,6 @@ class CartController extends Controller
          $cartItems = session()->get("cart");
          return view("cart.index", ['cartItems' => $cartItems]);
       }
-
-
       $customerId = Auth::user()->id;
       $cartItems = Cart::where("customer_id", "=", $customerId)->get();
       return view("cart.index", ['cart' => $cartItems]);
@@ -26,15 +24,15 @@ class CartController extends Controller
 
    public function count()
    {
-
+      $count = 0;
       if (!Auth::user()) {
          if (session('cart') !== null) {
             return response()->json(count(session('cart')));
          }
+      } else {
+         $customerId = Auth::user()->id;
+         $count = Cart::where("customer_id", "=", $customerId)->count();
       }
-
-      $customerId = Auth::user()->id;
-      $count = Cart::where("customer_id", "=", $customerId)->count();
       return response()->json($count);
    }
    public function store(Request $request)

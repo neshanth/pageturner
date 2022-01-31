@@ -29,13 +29,14 @@
     </div>
 </header>
 <div class="container search-container hide-items">
+    <h3 class="text-center">Search</h3>
     <div class="close-container">
         <button class="close-btn btn btn-custom-secondary">
             <i class="fa fa-times"></i>
         </button>
     </div>
     <form action="" class="search-form" method="post">
-        <input type="text" name="" class="search-input" id="">
+        <input type="text" name="" class="search-input" id="" placeholder="Enter Book Name...">
         <button class="btn btn-custom-primary"> <i class="fa fa-search"></i> </button>
     </form>
 </div>

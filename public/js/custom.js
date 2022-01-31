@@ -63,7 +63,6 @@ $(".cart-form").on("submit", function (e) {
         },
         error: function (err) {
             if (err.status === 401) {
-                // window.location.href = "login";
                 failiureElement.text("Please Log In");
                 setTimeout(function () {
                     failiureElement.hide();
@@ -81,9 +80,7 @@ function cartCount() {
         success: function (response) {
             var count = $(".cart-count").text(response);
         },
-        error: function (err) {
-            console.log(err);
-        },
+        error: function (err) {},
     });
 }
 cartCount();
