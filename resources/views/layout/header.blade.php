@@ -13,4 +13,4 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">

@@ -59,6 +59,11 @@
                         </h5>
                     </div>
                 </div>
+                @if(session("cart") != null)
+                <div class="checkout-btn">
+                    <a href="/checkout" class="btn btn-danger">Checkout</a>
+                </div>
+                @endif
             </div>
         </div>
     </div>
