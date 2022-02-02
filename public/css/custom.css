@@ -34,6 +34,9 @@ body {
 .text-custom-primary {
     color: var(--primary-color);
 }
+.text-custom-secondary {
+    color: var(--secondary-color);
+}
 
 ul li {
     list-style: none;
@@ -264,6 +267,17 @@ a {
     color: #fff;
 }
 
+/* Search Page */
+.result-text {
+    font-size: 18px;
+}
+.result-count {
+    background-color: var(--primary-color);
+    padding: 0.5em;
+    display: inline-block;
+    font-weight: 800;
+    color: var(--white);
+}
 /* FOOTER */
 .footer {
     background-color: var(--primary-color);

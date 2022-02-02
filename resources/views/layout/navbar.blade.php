@@ -35,8 +35,8 @@
             <i class="fa fa-times"></i>
         </button>
     </div>
-    <form action="" class="search-form" method="post">
-        <input type="text" name="" class="search-input" id="" placeholder="Enter Book Name...">
+    <form action="{{ route('search') }}" method="GET" class="search-form">
+        <input type="text" name="book" class="search-input" id="" placeholder="Enter Book Name...">
         <button class="btn btn-custom-primary"> <i class="fa fa-search"></i> </button>
     </form>
 </div>

@@ -16,7 +16,7 @@
 <div class="container">
     <div class="cart my-5">
         <div class="row bg-white rounded justify-content-between">
-            <div class="col-md-7 cart-content mx-4">
+            <div class="col-md-7 cart-content">
                 <div class="cart-title d-flex justify-content-between p-4 border-bottom border-primary">
                     <h4>Shopping Cart</h4>
                     <p>{{ $cart->count()}} items</p>
@@ -64,10 +64,13 @@
                 <div class="total my-3 d-flex justify-content-between text-white">
                     <h5 class="text-white">TOTAL</h5>
                     <div class="total-container">
-                        <h5 class="total">
+                        <div class="total">
                             <span>&#x20B9;</span>
                             <span class="total-amount"></span>
-                        </h5>
+                        </div>
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                     </div>
                 </div>
 

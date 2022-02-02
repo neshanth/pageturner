@@ -28,7 +28,9 @@
                 @foreach($products as $product)
                 <div class="carousel-cell">
                     <div class="card h-100" style="width: 18rem;">
-                        <img src="{{ asset("storage/product/".$product->image) }}" class="card-img-top" alt="{{ $product->image }}">
+                        <a href="{{ '/product/' .$product->id }}">
+                            <img src="{{ asset("storage/product/".$product->image) }}" class="card-img-top" alt="{{ $product->image }}">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="{{ '/product/' .$product->id }}">{{ $product->title }}</a>

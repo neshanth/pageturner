@@ -1,7 +1,7 @@
 <div class="container">
     <div class="cart my-5">
         <div class="row bg-white rounded justify-content-between">
-            <div class="col-md-7 cart-content mx-4">
+            <div class="col-md-7 cart-content">
                 <div class="cart-title d-flex justify-content-between p-4 border-bottom border-primary">
                     <h4>Shopping Cart</h4>
                     @if(session("cart"))
@@ -60,8 +60,8 @@
                     </div>
                 </div>
                 @if(session("cart") != null)
-                <div class="checkout-btn">
-                    <a href="/checkout" class="btn btn-danger">Checkout</a>
+                <div class="d-flex justify-content-center">
+                    <a href="/checkout" class="btn btn-light btn-lg checkout-btn">Checkout</a>
                 </div>
                 @endif
             </div>
