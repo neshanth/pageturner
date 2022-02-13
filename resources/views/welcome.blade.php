@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 
-
 @section('content')
 <div class="site-blocks-cover" data-aos="fade">
     <div class="container">
@@ -17,7 +16,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="site-section">
     <div class="container">

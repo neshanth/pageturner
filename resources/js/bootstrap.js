@@ -1,13 +1,10 @@
 window._ = require("lodash");
-require("flickity");
 
 try {
     require("bootstrap");
 } catch (e) {}
 
 window.axios = require("axios");
-window.Flickity = require("flickity");
-
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**

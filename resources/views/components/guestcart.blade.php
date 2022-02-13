@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="cart my-5">
         <div class="row bg-white rounded justify-content-between">
             <div class="col-md-7 cart-content">
@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="site-section">
     <div class="container">

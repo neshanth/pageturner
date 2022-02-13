@@ -20,7 +20,6 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
-        "axios": "^0.25.0",
-        "flickity": "^2.3.0"
+        "axios": "^0.25.0"
     }
 }

@@ -4,6 +4,12 @@
     --black: #000;
 }
 
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 /* Globals  */
 .btn--custom-primary {
     background-color: var(--primary-color);
@@ -76,12 +82,19 @@ a {
 
 /* End of Recently Added */
 
+/* Category Page */
+
 /* Cart */
 .site-blocks-table .product-thumbnail {
     width: 30px;
 }
 .cart-success {
     font-size: 1.3rem;
+}
+
+.category-item .item-title,
+.category-item .item-price {
+    margin: 0.5em 0;
 }
 
 /* CSS Overrides */

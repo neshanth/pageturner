@@ -1,36 +1,3 @@
-//FLICKITY
-var elem = document.querySelector(".main-carousel");
-var flkty = new Flickity(elem, {
-    // options
-    cellAlign: "left",
-    contain: true,
-});
-
-// Navigation Menu
-// let hamburgerButton = document.querySelector(".hamburger");
-// let mobileMenu = document.querySelector(".mobile-menu");
-// hamburgerButton.addEventListener("click", () => {
-//     mobileMenu.classList.toggle("hide-menu");
-//     mobileMenu.classList.toggle("show-menu");
-// });
-
-// Search Bar
-// let searchIcon = document.querySelector(".search-icon");
-// let logo = document.querySelector(".logo");
-// let rightMenu = document.querySelector(".right-menu");
-// let searchContainer = document.querySelector(".search-container");
-// let closeBtn = document.querySelector(".close-btn");
-// searchIcon.addEventListener("click", () => {
-//     logo.classList.add("hide-items");
-//     rightMenu.classList.add("hide-items");
-//     searchContainer.classList.remove("hide-items");
-// });
-// closeBtn.addEventListener("click", () => {
-//     logo.classList.remove("hide-items");
-//     rightMenu.classList.remove("hide-items");
-//     searchContainer.classList.add("hide-items");
-// });
-
 // Cart AJAX
 
 $(".cart-form").on("submit", function (e) {
