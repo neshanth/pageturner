@@ -7,29 +7,29 @@ var flkty = new Flickity(elem, {
 });
 
 // Navigation Menu
-let hamburgerButton = document.querySelector(".hamburger");
-let mobileMenu = document.querySelector(".mobile-menu");
-hamburgerButton.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hide-menu");
-    mobileMenu.classList.toggle("show-menu");
-});
+// let hamburgerButton = document.querySelector(".hamburger");
+// let mobileMenu = document.querySelector(".mobile-menu");
+// hamburgerButton.addEventListener("click", () => {
+//     mobileMenu.classList.toggle("hide-menu");
+//     mobileMenu.classList.toggle("show-menu");
+// });
 
 // Search Bar
-let searchIcon = document.querySelector(".search-icon");
-let logo = document.querySelector(".logo");
-let rightMenu = document.querySelector(".right-menu");
-let searchContainer = document.querySelector(".search-container");
-let closeBtn = document.querySelector(".close-btn");
-searchIcon.addEventListener("click", () => {
-    logo.classList.add("hide-items");
-    rightMenu.classList.add("hide-items");
-    searchContainer.classList.remove("hide-items");
-});
-closeBtn.addEventListener("click", () => {
-    logo.classList.remove("hide-items");
-    rightMenu.classList.remove("hide-items");
-    searchContainer.classList.add("hide-items");
-});
+// let searchIcon = document.querySelector(".search-icon");
+// let logo = document.querySelector(".logo");
+// let rightMenu = document.querySelector(".right-menu");
+// let searchContainer = document.querySelector(".search-container");
+// let closeBtn = document.querySelector(".close-btn");
+// searchIcon.addEventListener("click", () => {
+//     logo.classList.add("hide-items");
+//     rightMenu.classList.add("hide-items");
+//     searchContainer.classList.remove("hide-items");
+// });
+// closeBtn.addEventListener("click", () => {
+//     logo.classList.remove("hide-items");
+//     rightMenu.classList.remove("hide-items");
+//     searchContainer.classList.add("hide-items");
+// });
 
 // Cart AJAX
 
@@ -89,20 +89,27 @@ cartCount();
 $(".qty-btn").on("click", function (e) {
     e.preventDefault();
     var button = $(this).attr("data-qty");
-    var input = $(this).parent().find(".quantity-input");
-    var token = $(this).parent().find("input[name='_token']").val();
-    var cartId = $(this).parent().find("input[name='cart-id']").val();
+    var input = "";
+    if (e.target.getAttribute("data-qty") == "inc") {
+        input = e.target.parentElement.previousElementSibling;
+    } else {
+        input = e.target.parentElement.nextElementSibling;
+    }
+    var token =
+        e.target.parentNode.parentNode.parentNode.firstElementChild.value;
+    var cartId = e.target.parentNode.parentNode.firstElementChild.value;
+    var successElement = $(".cart-update-success");
     var data = {
         _token: token,
         cartId: cartId,
         qty: button,
     };
     if (button === "dec") {
-        var count = parseInt(input.text()) - 1;
+        let count = parseInt(input.value) - 1;
         count = count < 1 ? 1 : count;
-        input.text(count);
+        input.value = count;
     } else {
-        input.text(parseInt(input.text()) + 1);
+        input.value = parseInt(input.value) + 1;
     }
     $.ajax({
         url: "/cart/update",
@@ -110,10 +117,12 @@ $(".qty-btn").on("click", function (e) {
         data: data,
         success: function (response) {
             cartTotals();
+            successElement.text("Cart Has Been Updated");
+            setTimeout(() => {
+                successElement.text("");
+            }, 3000);
         },
-        error: function (err) {
-            console.log(err);
-        },
+        error: function (err) {},
     });
 });
 
@@ -124,9 +133,7 @@ $(".cart-delete").on("click", function (e) {
     var cartId = $(this).parent().find(".cart-delete").attr("data-id");
     var deleteButton = $(this);
     var cartItem = $(this).parent();
-    var spinner = document.querySelector(
-        `.spinner-border[data-id="${cartId}"]`
-    );
+    var successElement = $(".cart-update-success");
     var data = {
         _token: token,
         cartId: cartId,
@@ -138,12 +145,13 @@ $(".cart-delete").on("click", function (e) {
         success: function (response) {
             deleteButton.prop("disabled", true);
             cartItem.addClass("disable-item");
-            spinner.classList.add("show-loader");
-            location.reload();
+            successElement.text("Please Click On Update Cart");
+            setTimeout(() => {
+                successElement.text("");
+            }, 3000);
+            // location.reload();
         },
-        error: function (err) {
-            console.log(err);
-        },
+        error: function (err) {},
     });
     cartTotals();
 });

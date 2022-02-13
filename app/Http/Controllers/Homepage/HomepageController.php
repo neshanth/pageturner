@@ -10,8 +10,7 @@ class HomepageController extends Controller
 {
   public function index()
   {
-    $categories = Category::all();
     $products   = DB::table("products")->latest()->limit(10)->get();
-    return view("welcome", ['categories' => $categories, 'products' => $products]);
+    return view("welcome", ['products' => $products]);
   }
 }
