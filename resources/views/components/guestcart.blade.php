@@ -10,6 +10,7 @@
                                 <th class="product-name">Product</th>
                                 <th class="product-price">Price</th>
                                 <th class="product-quantity">Quantity</th>
+                                <th class="product-total">Total</th>
                                 <th class="product-remove">Remove</th>
                             </tr>
                         </thead>
@@ -30,17 +31,18 @@
                                         <div class="input-group mb-3 cart-buttons" style="max-width: 120px;">
                                             <input type="hidden" name="cart-id" value={{ $c['product_id'] }}>
                                             <div class="input-group-prepend">
-                                                <button data-qty="dec" class="btn btn-outline-primary dec-btn  qty-btn" type="button">&minus;</button>
+                                                <button data-qty="dec" data-price="{{ $c['price'] }}" class="btn btn-outline-primary dec-btn  qty-btn" type="button">&minus;</button>
                                             </div>
                                             <input type="text" class="form-control text-center quantity-input w-50" value={{ $c['quantity']  }} placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                             <div class="input-group-append">
-                                                <button data-qty="inc" class="btn btn-outline-primary inc-btn qty-btn" type="button">&plus;</button>
+                                                <button data-qty="inc" data-price="{{ $c['price'] }}" class="btn btn-outline-primary inc-btn qty-btn" type="button">&plus;</button>
                                             </div>
                                         </div>
 
                                     </form>
 
                                 </td>
+                                <td class="product-subtotal">Rs. {{ intval($c['quantity']) * floatval($c['price']) }}</td>
                                 <td>
                                     <form>
                                         @csrf

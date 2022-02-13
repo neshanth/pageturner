@@ -57,6 +57,9 @@ $(".qty-btn").on("click", function (e) {
     e.preventDefault();
     var button = $(this).attr("data-qty");
     var input = "";
+    let subtotal =
+        e.target.parentElement.parentElement.parentElement.nextElementSibling;
+    let price = e.target.getAttribute("data-price");
     if (e.target.getAttribute("data-qty") == "inc") {
         input = e.target.parentElement.previousElementSibling;
     } else {
@@ -77,7 +80,9 @@ $(".qty-btn").on("click", function (e) {
         input.value = count;
     } else {
         input.value = parseInt(input.value) + 1;
+        console.log(subtotal);
     }
+    subtotal.textContent = "Rs." + parseFloat(input.value * parseFloat(price));
     $.ajax({
         url: "/cart/update",
         type: "post",
