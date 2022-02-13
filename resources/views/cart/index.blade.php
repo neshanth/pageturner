@@ -41,19 +41,18 @@
                                 <td>
                                     <form>
                                         @csrf
-                                        <div class="input-group mb-3" style="max-width: 120px;">
+                                        <div class="input-group mb-3 cart-buttons" style="max-width: 120px;">
                                             <input type="hidden" name="cart-id" value={{ $c->id }}>
                                             <div class="input-group-prepend">
                                                 <button data-qty="dec" class="btn btn-outline-primary dec-btn  qty-btn" type="button">&minus;</button>
                                             </div>
-                                            <input type="text" class="form-control text-center quantity-input" value={{ $c->quantity  }} placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                            <input type="text" class="form-control text-center quantity-input w-50" value={{ $c->quantity  }} placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                             <div class="input-group-append">
                                                 <button data-qty="inc" class="btn btn-outline-primary inc-btn qty-btn" type="button">&plus;</button>
                                             </div>
                                         </div>
 
                                     </form>
-
                                 </td>
                                 <td>
                                     <form>
@@ -70,25 +69,30 @@
                     <p class="cart-update-delete .cart-update text-warning text-center"></p>
                 </div>
             </form>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row mb-5">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                        <button class="btn btn-primary btn-sm btn-block" onclick="location.reload()">Update Cart</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
-                    </div>
+            @if($cart->count() == 0)
+            <h3 class="text-center text--custom-primary">Your shopping cart is empty</h3>
+            <div class="go-back text-center">
+                <a href="/" class="btn btn--custom-primary">Go Back</a>
+            </div>
+            @endif
+            @if ($cart->count() > 0)
+            <div class="row mb-5">
+                <div class="col-md-12 mb-3 mb-md-0 text-center">
+                    <a class="btn btn--custom-primary" href="/cart/show">
+                        Update Cart
+                    </a>
                 </div>
             </div>
-            <div class="col-md-6 pl-5">
-                <div class="row justify-content-end">
+            @endif
+        </div>
+        @if($cart->count() > 0)
+        <div class="row">
+            <div class="col-md-12 pl-5">
+                <div class="row justify-content-center">
                     <div class="col-md-7">
                         <div class="row">
-                            <div class="col-md-12 text-right border-bottom mb-5">
-                                <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                            <div class="col-md-12 text-center mb-5">
+                                <h3 class="text-black h4 text-uppercase cart-totals-text">Cart Totals</h3>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -96,7 +100,7 @@
                                 <span class="text-black">Subtotal</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="total-amount"></strong>
+                                <strong class="total-amount text--custom-primary"></strong>
                             </div>
                         </div>
                         <div class="row mb-5">
@@ -104,19 +108,19 @@
                                 <span class="text-black">Total</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="total-amount"></strong>
+                                <strong class="total-amount text--custom-primary"></strong>
                             </div>
                         </div>
-
                         <div class="row">
-                            <div class="col-md-12">
-                                <button class="btn btn-primary btn-lg btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
+                            <div class="col-md-12 text-center">
+                                <a href="/checkout" class="btn btn-primary btn-lg btn-block">Proceed To Checkout</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endif
     </div>
 </div>
 

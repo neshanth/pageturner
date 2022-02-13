@@ -8,7 +8,6 @@
              </form>
          </div>
      </div>
-
      <div class="container">
          <div class="d-flex align-items-center justify-content-between">
              <div class="logo">
@@ -22,7 +21,7 @@
                  <nav class="site-navigation text-right text-md-center" role="navigation">
                      <ul class="site-menu js-clone-nav d-none d-lg-block">
                          <li class="has-children active">
-                             <a href="index.html">Home</a>
+                             <a href="#">Categories</a>
                              <ul class="dropdown">
                                  @foreach ($categories as $category)
                                  <li><a href={{ url("/category",[$category->id]) }}>{{ $category->name }}</a></li>
@@ -30,7 +29,7 @@
 
                              </ul>
                          </li>
-                         <li><a href="#">Catalogue</a></li>
+                         <li><a href="#">All Genres</a></li>
                          @auth
                          <li><a href="{{ route('dashboard') }}">My Profile</a></li>
                          @endauth

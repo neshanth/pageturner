@@ -113,10 +113,6 @@ $(".cart-delete").on("click", function (e) {
             deleteButton.prop("disabled", true);
             cartItem.addClass("disable-item");
             successElement.text("Please Click On Update Cart");
-            setTimeout(() => {
-                successElement.text("");
-            }, 3000);
-            // location.reload();
         },
         error: function (err) {},
     });

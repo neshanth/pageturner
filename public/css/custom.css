@@ -88,7 +88,8 @@ a {
 .site-blocks-table .product-thumbnail {
     width: 30px;
 }
-.cart-success {
+.cart-success,
+.cart-update-success {
     font-size: 1.3rem;
 }
 
@@ -96,7 +97,34 @@ a {
 .category-item .item-price {
     margin: 0.5em 0;
 }
-
+thead > tr {
+    background-color: var(--primary-color);
+}
+.site-blocks-table thead th {
+    color: var(--white);
+}
+.cart-buttons {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+.cart-buttons > * {
+    margin: 0.5em 0;
+}
+.quantity-input {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.qty-btn {
+    font-size: 1.3rem;
+}
+.total-amount {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+.cart-totals-text {
+    border-bottom: 2px solid var(--primary-color);
+}
 /* CSS Overrides */
 .cart-update {
     font-size: 1.5rem;
