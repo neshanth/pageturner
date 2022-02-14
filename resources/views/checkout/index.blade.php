@@ -2,10 +2,9 @@
 
 @section('content')
 <div class="container mt-4">
-
     <div class="row">
         <div class="col-md-8">
-            <h2>Shipping Address</h2>
+            <h2 class="text-dark">Shipping Address</h2>
             @if(session('error'))
             <p class="text-danger text-center">{{ session("error") }}</p>
             @endif
@@ -20,10 +19,6 @@
                             <span>{{ $a->lastname }}</span>
                         </p>
                         <p><strong>Address : </strong>{{ $a->full_address }}</p>
-                        <p>
-                            <strong>State : </strong> <span>{{ $a->state }}</span>
-                            <strong>City: </strong><span>{{ $a->city }}</span>
-                        </p>
                         <p><strong>Postcode :</strong>{{ $a->postcode }}</p>
                     </address>
                     @if ($a->is_billing)
@@ -44,42 +39,40 @@
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="firstname" class="form-label">FirstName</label>
-                        <input type="text" class="form-control" name="firstname" id="firstname" required>
+                        <label for="firstname" class="form-label text-dark">FirstName</label>
+                        <input type="text" class="form-control  custom--border" name="firstname" id="firstname" required>
+                        @if($errors->has('firstname'))
+                        <p class="text-danger mb-3">{{ $errors->first('firstname') }}</p>
+                        @endif
                     </div>
                     <div class="col-md-6">
-                        <label for="lastname" class="form-label">LastName</label>
-                        <input type="text" class="form-control" name="lastname" id="lastname">
+                        <label for="lastname" class="form-label text-dark">LastName</label>
+                        <input type="text" class="form-control custom--border" name="lastname" id="lastname">
+                        @if($errors->has('lastname'))
+                        <p class="text-danger mb-3">{{ $errors->first('lastname') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="address" class="form-label">Address</label>
-                    <textarea name="full_address" id="address" cols="30" class="form-control" rows="5" required></textarea>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="state" class="form-label">State</label>
-                        <select class="form-select" name="state" aria-label="Default select example">
-                            <option value="1">TamilNadu</option>
-                            <option value="2">Kerala</option>
-                            <option value="3">Karnataka</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="city" class="form-label">City</label>
-                        <select name="city" class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                    <div class="col-md-12">
+                        <label for="address" class="form-label text-dark">Address</label>
+                        <textarea name="full_address" id="address" cols="30" class="form-control custom--border" rows="10" required></textarea>
+                        @if($errors->has('full_address'))
+                        <p class="text-danger mb-3">{{ $errors->first('full_address') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label for="postcode" class="form-label">Postcode</label>
-                        <input type="text" name="postcode" class="form-control" required>
+                        <label for="postcode" class="form-label text-dark">Postcode</label>
+                        <input type="text" name="postcode" class="form-control custom--border" required>
+                        @if($errors->has('postcode'))
+                        <p class="text-danger mb-3">{{ $errors->first('postcode') }}</p>
+                        @endif
                     </div>
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <button class="btn btn--custom-primary col-lg-4 col-md-4">Create Address</button>
                 </div>
             </form>
             @endif

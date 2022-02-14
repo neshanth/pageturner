@@ -23,7 +23,7 @@ class AddressController extends Controller
     {
         $address = Address::all();
 
-        return view("address.index",['address' => $address]);
+        return view("address.index", ['address' => $address]);
     }
 
     /**
@@ -51,9 +51,7 @@ class AddressController extends Controller
 
         $request->validate([
             'firstname' => 'required',
-            'full_address'=> 'required',
-            'state' => 'required',
-            'city' => 'required',
+            'full_address' => 'required',
             'postcode' => 'required|regex:/^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$/',
             'user_id' => 'required'
 
@@ -62,16 +60,11 @@ class AddressController extends Controller
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'full_address' => $request->full_address,
-            'state' => $request->state,
-            'city' => $request->city,
             'postcode' => $request->postcode,
             'user_id' => $request->user_id
         ];
-
-        
-
         Address::create($data);
-        return redirect()->route("address.index")->with('success','Address Created');
+        return redirect()->route("address.index")->with('success', 'Address Created');
     }
 
     /**
@@ -93,8 +86,8 @@ class AddressController extends Controller
      */
     public function edit($id)
     {
-        $address = Address::where("id",$id)->get();
-        return view("address.edit",['address' => $address]);
+        $address = Address::where("id", $id)->get();
+        return view("address.edit", ['address' => $address]);
     }
 
     /**
@@ -109,9 +102,7 @@ class AddressController extends Controller
 
         $request->validate([
             'firstname' => 'required',
-            'full_address'=> 'required',
-            'state' => 'required',
-            'city' => 'required',
+            'full_address' => 'required',
             'postcode' => 'required|regex:/^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$/',
             'user_id' => 'required'
 
@@ -120,13 +111,11 @@ class AddressController extends Controller
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'full_address' => $request->full_address,
-            'state' => $request->state,
-            'city' => $request->city,
             'postcode' => $request->postcode,
             'user_id' => $request->user_id
         ];
         Address::find($id)->update($data);
-        return redirect()->route("address.index")->with('success','Address Updated');
+        return redirect()->route("address.index")->with('success', 'Address Updated');
     }
 
     /**
@@ -137,22 +126,21 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        
+
         Address::destroy($id);
-        return redirect()->route("address.index")->with("success","Address Deleted");
+        return redirect()->route("address.index")->with("success", "Address Deleted");
     }
     public function setAsBilling(Request $request)
     {
-      $addressId = $request->address_id;
-      $this->setBillingForCustomer($addressId);
-      return redirect()->back();
-    
+        $addressId = $request->address_id;
+        $this->setBillingForCustomer($addressId);
+        return redirect()->back();
     }
     private function setBillingForCustomer($addressId)
     {
         $customerId = Auth::user()->id;
-        $getAllAddress = Address::where("user_id",'=',$customerId)->get();
-        foreach($getAllAddress as $address){
+        $getAllAddress = Address::where("user_id", '=', $customerId)->get();
+        foreach ($getAllAddress as $address) {
             $address->is_billing = false;
             $address->save();
         }
@@ -160,7 +148,5 @@ class AddressController extends Controller
         $getSelectedAddress = Address::find($addressId);
         $getSelectedAddress->is_billing = true;
         $getSelectedAddress->save();
-        
-
     }
 }
