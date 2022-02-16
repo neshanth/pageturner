@@ -14,7 +14,7 @@ body {
 .btn--custom-primary {
     background-color: var(--primary-color);
     color: var(--white);
-    padding: 12px 30px;
+    padding: 0.5em 1em;
 }
 .btn--custom-primary:hover {
     background-color: rgba(0, 102, 255, 0.4);
@@ -128,6 +128,14 @@ thead > tr {
 .cart-totals-text {
     border-bottom: 2px solid var(--primary-color);
 }
+
+/* End of Cart Page */
+
+/* Checkout */
+.address-modal {
+    margin-top: 8em;
+}
+
 /* CSS Overrides */
 .cart-update {
     font-size: 1.5rem;

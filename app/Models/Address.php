@@ -10,6 +10,5 @@ class Address extends Model
     use HasFactory;
     protected $table = 'address';
 
-    protected $fillable = ['firstname','lastname','full_address','state','city','postcode','user_id'];
-    
+    protected $fillable = ['firstname', 'lastname', 'full_address', 'postcode', 'user_id'];
 }
