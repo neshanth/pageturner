@@ -74,6 +74,7 @@
                 @endif
             </div>
         </div>
+        @if (session('cart') != null)
         <div class="row">
             <div class="col-md-12 pl-5">
                 <div class="row justify-content-center">
@@ -111,5 +112,6 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 </div>

@@ -11,9 +11,13 @@ class ShowCategoryController extends Controller
 {
     public function index($id)
     {
-       $products = Product::where("cat_id",'=',$id)->get();
-       $categoryName = Category::find($id)->name;
-       return view("category.show",['products' => $products,'title' => $categoryName]);
-
+        $products = Product::where("cat_id", '=', $id)->get();
+        $categoryName = Category::find($id)->name;
+        return view("category.show", ['products' => $products, 'title' => $categoryName]);
+    }
+    public function all()
+    {
+        $categories = Category::all();
+        return view("category.all", ['categories' => $categories]);
     }
 }

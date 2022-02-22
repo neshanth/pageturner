@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class CategoryController extends Controller
@@ -64,9 +65,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view("category.edit", ['category' => $category]);
     }
 
     /**
@@ -76,9 +78,28 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => "required",
+            'image' => 'max:1000|mimes:png,jpeg,jpg,svg'
+
+        ]);
+        $fileName = null;
+        if ($request->hasFile('image') && !$this->checkIfImageExists($id, $request)) {
+            $fileName = $request->file('image')->getClientOriginalName();
+            $existingImage = $this->getImage($id);
+            $this->deleteImage($existingImage);
+            $request->file("image")->storeAs('public/category', $fileName);
+        } else {
+            $fileName = $request->file('image')->getClientOriginalName();
+        }
+        $data = [
+            'name' => $request->name,
+            'image' => $fileName
+        ];
+        Category::find($id)->update($data);
+        return redirect()->back()->with("success", "Category Updated Successfully");
     }
 
     /**
@@ -87,8 +108,22 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         //
+    }
+    private function checkIfImageExists($id, Request $request): bool
+    {
+        $category = Category::find($id);
+        return $category->image == $request->file('image')->getClientOriginalName();
+    }
+    private function getImage($id)
+    {
+        $category = Category::find($id);
+        return $category->image;
+    }
+    private function deleteImage($imageName)
+    {
+        Storage::delete("/public/category/" . $imageName);
     }
 }

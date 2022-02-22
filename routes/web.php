@@ -62,6 +62,7 @@ Route::get("/orders/{id}", [OrderController::class, 'getOrderItems']);
 
 //Show category
 Route::get("/category/{id}", [ShowCategoryController::class, 'index']);
+Route::get("/genres", [ShowCategoryController::class, 'all']);
 //show product
 Route::get("/product/{id}", [ShowProductController::class, 'index']);
 

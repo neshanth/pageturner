@@ -29,7 +29,7 @@
 
                              </ul>
                          </li>
-                         <li><a href="#">All Genres</a></li>
+                         <li><a href="/genres">All Genres</a></li>
                          @auth
                          <li><a href="{{ route('dashboard') }}"> <span class="icon-user-o text--custom-primary"></span> My Profile</a></li>
                          @endauth
