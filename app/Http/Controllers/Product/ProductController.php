@@ -51,7 +51,8 @@ class ProductController extends Controller
             'cat_id' => 'required',
             'stock' => 'required|numeric',
             'description' => 'required',
-            'image' => 'max:1000|mimes:png,jpeg,jpg,svg'
+            'image' => 'max:1000|mimes:png,jpeg,jpg,svg',
+            'author' => 'required'
         ]);
         $fileName = null;
         if ($request->file('image')) {
@@ -64,7 +65,8 @@ class ProductController extends Controller
             'cat_id' => $request->cat_id,
             'stock' => $request->stock,
             'description' => $request->description,
-            'image' => $fileName
+            'image' => $fileName,
+            'author' => $request->author
         ];
         Product::create($data);
         return redirect()->back()->with('success', 'Product Created');
@@ -98,7 +100,8 @@ class ProductController extends Controller
             'cat_id' => 'required',
             'stock' => 'required|numeric',
             'description' => 'required',
-            'image' => 'max:1000|mimes:png,jpeg,jpg,svg'
+            'image' => 'max:1000|mimes:png,jpeg,jpg,svg',
+            'author' => 'required'
         ]);
         $fileName = null;
         if ($request->hasFile('image') && !$this->checkIfImageExists($id, $request)) {
@@ -115,7 +118,8 @@ class ProductController extends Controller
             'cat_id' => $request->cat_id,
             'stock' => $request->stock,
             'description' => $request->description,
-            'image' => $fileName
+            'image' => $fileName,
+            'author' => $request->author
         ];
         Product::find($id)->update($data);
         return redirect()->back()->with("success", "Product Updated Successfully");

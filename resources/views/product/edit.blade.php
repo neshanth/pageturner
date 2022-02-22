@@ -25,6 +25,13 @@
             @endif
         </div>
         <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" name="author" class="form-control" id="author" placeholder="Author" value="{{ $p->author }}">
+            @if($errors->has("author"))
+            <p class="text-danger mb-3">{{ $errors->first('author') }}</p>
+            @endif
+        </div>
+        <div class="mb-3">
             <label for="cat_id" class="form-label">Category</label>
             <select name="cat_id" class="form-select" id="cat_id">
                 @foreach($categories as $category)
