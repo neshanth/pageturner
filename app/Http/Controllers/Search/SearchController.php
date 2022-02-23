@@ -10,10 +10,11 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
-        $bookName = $request->input("book");
+        $query = $request->input("query");
         $books = DB::table('products')
-            ->where("title", "LIKE", "%{$bookName}%")
+            ->where("title", "LIKE", "%{$query}%")
+            ->orWhere("author", "LIKE", "%{$query}%")
             ->get();
-        return view("search.index", ['products' => $books, 'bookName' => $bookName]);
+        return view("search.index", ['products' => $books, 'query' => $query]);
     }
 }

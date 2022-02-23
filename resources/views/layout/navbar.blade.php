@@ -4,7 +4,7 @@
          <div class="container">
              <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
              <form action="{{ route('search') }}">
-                 <input type="text" name="book" class="form-control" placeholder="Search By book Name" required>
+                 <input type="text" name="query" class="form-control" placeholder="Search By book Name or Author" required>
              </form>
          </div>
      </div>
