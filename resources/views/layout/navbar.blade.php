@@ -31,7 +31,7 @@
                          </li>
                          <li><a href="/genres">All Genres</a></li>
                          @auth
-                         <li><a href="{{ route('dashboard') }}"> <span class="icon-user-o text--custom-primary"></span> My Profile</a></li>
+                         <li><a class="btn btn--custom-primary text-white" href="{{ route('dashboard') }}"> <span class="icon-user-o"></span> My Profile</a></li>
                          @endauth
                      </ul>
                  </nav>

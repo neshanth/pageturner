@@ -4,7 +4,7 @@
 <div class="title-section text-center mb-5 mt-5 col-12">
     <h2 class="text-uppercase">Search</h2>
 </div>
-@if($products->count() < 1) <h4>No Results Found</h4>
+@if($products->count() < 1) <h4 class="text-center text-dark">No Results Found</h4>
 
     @else
     <p class="text-center text--custom-primary">Found {{ count($products) }} {{ count($products) > 1 ?  "Results" : "Result" }} For {{ $query }}</p>

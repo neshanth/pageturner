@@ -24,7 +24,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => "required",
             'email' => "required|email|unique:users",
-            'password' => "required|min:5"
+            'password' => "required|min:5|confirmed"
         ]);
         $user = User::create([
             'name' => $request->name,
@@ -32,7 +32,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
         $user->assignRole("User");
-        return redirect()->back()->with('success', 'Registration Successful');
+        return redirect("/login");
     }
     public function loginPost(Request $request)
     {
