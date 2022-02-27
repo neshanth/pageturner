@@ -30,4 +30,9 @@ class DashboardController extends Controller
         }
         return view("dashboard.index", ['customer' => $dashBoardInfo]);
     }
+    public function getCustomers()
+    {
+        $customers = User::all();
+        return view("customers.index", ['customers' => $customers]);
+    }
 }

@@ -29,6 +29,7 @@ Route::post("/logout", [AuthController::class, 'logout'])->name("logout");
 
 //Dashboard Controllers
 Route::get("/dashboard", [DashboardController::class, 'index'])->name("dashboard");
+
 // Roles Controller
 Route::prefix("admin")->group(function () {
     Route::resource("roles", RoleController::class)->middleware('role:Admin');
@@ -68,3 +69,6 @@ Route::get("/product/{id}", [ShowProductController::class, 'index']);
 
 //Search
 Route::get("/search", [SearchController::class, 'index'])->name("search");
+
+//Customers
+Route::get("/customers", [DashboardController::class, 'getCustomers']);
