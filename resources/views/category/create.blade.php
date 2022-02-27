@@ -17,7 +17,7 @@
             @endif
         </div>
         <div class="mb-3 d-flex justify-content-center">
-            <button type="submit" class="btn btn-custom-primary">Submit</button>
+            <button type="submit" class="btn btn--custom-primary">Submit</button>
         </div>
     </form>
 </div>

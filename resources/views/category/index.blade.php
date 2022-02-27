@@ -7,7 +7,7 @@
     <h4 class="text-danger">{{ session('success') }}</h4>
     @endif
     <div class="add-category d-flex justify-content-end my-2">
-        <a class="btn btn-custom-primary" href="{{ route('categories.create') }}">Add Category <i class="fa fa-plus"></i></a>
+        <a class="btn btn--custom-primary" href="{{ route('categories.create') }}">Add Category <i class="fa fa-plus"></i></a>
     </div>
     <div class="table-responsive">
         <table class="table">
